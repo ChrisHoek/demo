@@ -1,6 +1,5 @@
 package com.example.demo.restservice;
 
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,10 +10,13 @@ import java.util.List;
 
 
 @RestController
-@AllArgsConstructor
 public class TemperatureController {
 
     private TemperatureService temperatureService;
+
+    public TemperatureController(TemperatureService temperatureService) {
+        this.temperatureService = temperatureService;
+    }
 
     @GetMapping("/temperature")
     public List<Temperature> temperature() {
